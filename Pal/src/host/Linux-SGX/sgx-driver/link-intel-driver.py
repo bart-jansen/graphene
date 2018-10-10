@@ -15,33 +15,36 @@ try:
           "*****************************************************************\n" + \
           "\n"
 
-    while True:
-        if not isgx_path:
-            isgx_path = raw_input('Enter the Intel SGX driver directory: ')
-        if os.path.exists(isgx_path + '/sgx.h'):
-            break
-        if os.path.exists(isgx_path + '/isgx.h'):
-            break
-        print '{0} is not a directory for the Intel SGX driver'.format(isgx_path)
-        isgx_path = None
+    isgx_path = "/lib/modules/{}/kernel/drivers/intel/sgx".format(os.uname()[2])
+
+    # while True:
+    #     if not isgx_path:
+    #         isgx_path = raw_input('Enter the Intel SGX driver directory: ')
+    #     if os.path.exists(isgx_path + '/sgx.h'):
+    #         break
+    #     if os.path.exists(isgx_path + '/isgx.h'):
+    #         break
+    #     print '{0} is not a directory for the Intel SGX driver'.format(isgx_path)
+    #     isgx_path = None
 
 
     # get the driver version
-    while True:
-        if not isgx_version:
-            isgx_version = raw_input('Enter the driver version (default: 1.9): ')
-        if not isgx_version:
-            isgx_version_major = 1
-            isgx_version_minor = 9
-            break
-        m = re.match('([1-9])\.([0-9]+)', isgx_version)
-        if m:
-            isgx_version_major = m.group(1)
-            isgx_version_minor = m.group(2)
-            break
-        print '{0} is not a valid version (x.xx)'.format(isgx_version)
-        isgx_version = None
-
+    # while True:
+    #     if not isgx_version:
+    #         isgx_version = raw_input('Enter the driver version (default: 1.9): ')
+    #     if not isgx_version:
+    #         isgx_version_major = 1
+    #         isgx_version_minor = 9
+    #         break
+    #     m = re.match('([1-9])\.([0-9]+)', isgx_version)
+    #     if m:
+    #         isgx_version_major = m.group(1)
+    #         isgx_version_minor = m.group(2)
+    #         break
+    #     print '{0} is not a valid version (x.xx)'.format(isgx_version)
+    #     isgx_version = None
+    isgx_version_major = 1
+    isgx_version_major = 9
 
     # create a symbolic link called 'linux-sgx-driver'
     isgx_link = 'linux-sgx-driver'
