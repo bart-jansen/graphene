@@ -43,8 +43,8 @@ try:
     #         break
     #     print '{0} is not a valid version (x.xx)'.format(isgx_version)
     #     isgx_version = None
-    isgx_version_major = 1
-    isgx_version_minor = 9
+    isgx_version_major = 2
+    isgx_version_minor = 1
 
     # create a symbolic link called 'linux-sgx-driver'
     isgx_link = 'linux-sgx-driver'
